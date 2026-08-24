@@ -82,6 +82,10 @@ public class Client {
         return actif;
     }
 
+    public void setActif(boolean actif) {
+        this.actif = actif;
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
     }
