@@ -5,8 +5,6 @@ import com.example.projetSoutenance2026PME.dto.client.ClientResponse;
 import com.example.projetSoutenance2026PME.entity.Client;
 import com.example.projetSoutenance2026PME.exception.ResourceFoundException;
 import com.example.projetSoutenance2026PME.exception.ResourceNotFoundException;
-import com.example.projetSoutenance2026PME.exception.client.ClientFoundException;
-import com.example.projetSoutenance2026PME.exception.client.ClientNotFoundException;
 import com.example.projetSoutenance2026PME.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

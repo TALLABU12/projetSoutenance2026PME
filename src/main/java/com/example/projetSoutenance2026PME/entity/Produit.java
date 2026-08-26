@@ -1,6 +1,5 @@
 package com.example.projetSoutenance2026PME.entity;
 
-import com.example.projetSoutenance2026PME.dto.categorie.CategorieResponse;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -41,6 +40,11 @@ public class Produit {
         this.quantiteStock = quantiteStock;
         this.seuilAlert = seuilAlert;
         this.categorie = categorie;
+
+    }
+    @PrePersist
+    protected void onCreate(){
+        this.actif = true;
     }
 
     public Long getId() {

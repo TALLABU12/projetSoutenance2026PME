@@ -4,8 +4,6 @@ import com.example.projetSoutenance2026PME.dto.categorie.CategorieResponse;
 import com.example.projetSoutenance2026PME.entity.Categorie;
 import com.example.projetSoutenance2026PME.exception.ResourceFoundException;
 import com.example.projetSoutenance2026PME.exception.ResourceNotFoundException;
-import com.example.projetSoutenance2026PME.exception.categorie.CategorieFoundException;
-import com.example.projetSoutenance2026PME.exception.categorie.CategorieNotFoundException;
 import com.example.projetSoutenance2026PME.repository.CategorieRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

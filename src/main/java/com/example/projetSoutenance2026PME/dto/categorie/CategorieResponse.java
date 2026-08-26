@@ -1,7 +1,5 @@
 package com.example.projetSoutenance2026PME.dto.categorie;
 
-import jakarta.validation.constraints.NotBlank;
-
 public class CategorieResponse {
 
     private Long id;

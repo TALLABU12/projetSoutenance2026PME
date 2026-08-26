@@ -55,6 +55,17 @@ public class ProduitResponse {
         return seuilAlert;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public boolean isActif() {
+        return actif;
+    }
+
+    public CategorieResponse getCategorie() {
+        return categorie;
+    }
 
     public void setReference(String reference) {
         this.reference = reference;

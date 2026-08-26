@@ -9,6 +9,6 @@ import java.util.List;
 public interface ProduitRepository extends JpaRepository<Produit,Long> {
    public boolean  existsByReference(String reference);
 
-   @Query("SELECT p  FROM Produit JOIN FETCH p.categorie")
+   @Query("SELECT p  FROM Produit p JOIN FETCH p.categorie")
    public List<Produit> findAllWithCategorie();
 }
