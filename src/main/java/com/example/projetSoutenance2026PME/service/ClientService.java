@@ -1,10 +1,12 @@
 package com.example.projetSoutenance2026PME.service;
 
-import com.example.projetSoutenance2026PME.dto.ClientRequest;
-import com.example.projetSoutenance2026PME.dto.ClientResponse;
+import com.example.projetSoutenance2026PME.dto.client.ClientRequest;
+import com.example.projetSoutenance2026PME.dto.client.ClientResponse;
 import com.example.projetSoutenance2026PME.entity.Client;
-import com.example.projetSoutenance2026PME.exception.ClientFoundException;
-import com.example.projetSoutenance2026PME.exception.ClientNotFoundException;
+import com.example.projetSoutenance2026PME.exception.ResourceFoundException;
+import com.example.projetSoutenance2026PME.exception.ResourceNotFoundException;
+import com.example.projetSoutenance2026PME.exception.client.ClientFoundException;
+import com.example.projetSoutenance2026PME.exception.client.ClientNotFoundException;
 import com.example.projetSoutenance2026PME.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,7 +40,7 @@ public class ClientService {
     public ClientResponse ajouterClient(ClientRequest request){
         boolean clientOptional = clientRepository.existsByCode(request.getCode());
         if (clientOptional){
-            throw new ClientFoundException("Client existe deja");
+            throw new ResourceFoundException("Client existe deja");
         }
         Client client = new Client(request.getCode(), request.getNom(), request.getTelephone(), request.getEmail(), request.getAdresse());
         Client save = clientRepository.save(client);
@@ -48,7 +50,7 @@ public class ClientService {
     @Transactional
     public ClientResponse modifierClient(Long id , ClientRequest request){
         Client client = clientRepository.findById(id).orElseThrow(
-                ()-> new ClientNotFoundException("Client introuvable")
+                ()-> new ResourceNotFoundException("Client introuvable")
         );
         client.setNom(request.getNom());
         client.setTelephone(request.getTelephone());
@@ -66,7 +68,7 @@ public class ClientService {
     @Transactional
     public void supprimerClient(Long id){
         Client client = clientRepository.findById(id).orElseThrow(
-                ()-> new ClientNotFoundException("Client introuvable")
+                ()-> new ResourceNotFoundException("Client introuvable")
         );
         client.setActif(false);
     }
@@ -74,7 +76,7 @@ public class ClientService {
     @Transactional
     public ClientResponse chercherParId(Long id){
         Client client = clientRepository.findById(id).orElseThrow(
-                ()-> new ClientNotFoundException("Client introuvable")
+                ()-> new ResourceNotFoundException("Client introuvable")
         );
         return toResponse(client);
     }

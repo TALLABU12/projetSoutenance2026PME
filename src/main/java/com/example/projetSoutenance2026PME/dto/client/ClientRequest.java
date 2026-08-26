@@ -1,4 +1,4 @@
-package com.example.projetSoutenance2026PME.dto;
+package com.example.projetSoutenance2026PME.dto.client;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

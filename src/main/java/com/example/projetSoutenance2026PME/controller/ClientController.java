@@ -1,9 +1,8 @@
 package com.example.projetSoutenance2026PME.controller;
 
-import com.example.projetSoutenance2026PME.dto.ClientRequest;
-import com.example.projetSoutenance2026PME.dto.ClientResponse;
+import com.example.projetSoutenance2026PME.dto.client.ClientRequest;
+import com.example.projetSoutenance2026PME.dto.client.ClientResponse;
 import com.example.projetSoutenance2026PME.service.ClientService;
-import jakarta.annotation.PostConstruct;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
