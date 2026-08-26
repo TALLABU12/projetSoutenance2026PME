@@ -78,6 +78,6 @@ public class ProduitService {
         Produit p = produitRepository.findById(id).orElseThrow(
                 ()-> new ResourceNotFoundException("Produit introuvable")
         );
-        p.isActif(false);
+        p.setActif(false);
     }
 }

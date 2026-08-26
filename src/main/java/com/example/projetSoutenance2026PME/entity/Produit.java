@@ -107,7 +107,7 @@ public class Produit {
         this.seuilAlert = seuilAlert;
     }
 
-    public void isActif(boolean actif) {
+    public void setActif(boolean actif) {
         this.actif = actif;
     }
 
