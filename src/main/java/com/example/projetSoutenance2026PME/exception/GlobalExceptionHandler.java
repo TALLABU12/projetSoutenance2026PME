@@ -61,4 +61,23 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
 
     }
+
+    @ExceptionHandler(StockInsuffisantException.class)
+    public ResponseEntity<ErrorResponse> handleStockInsuffisantException(StockInsuffisantException ex){
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                ex.getMessage()
+        );
+
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
+
+    @ExceptionHandler(MouvementStockIncoherentException.class)
+    public ResponseEntity<ErrorResponse> handlerMouvementStockIncoherentException(MouvementStockIncoherentException ex){
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.CONFLICT.value(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+    }
 }

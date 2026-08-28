@@ -1,5 +1,6 @@
 package com.example.projetSoutenance2026PME.repository;
 
+import com.example.projetSoutenance2026PME.entity.MouvementStock;
 import com.example.projetSoutenance2026PME.entity.Produit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,4 +12,5 @@ public interface ProduitRepository extends JpaRepository<Produit,Long> {
 
    @Query("SELECT p  FROM Produit p JOIN FETCH p.categorie")
    public List<Produit> findAllWithCategorie();
+
 }

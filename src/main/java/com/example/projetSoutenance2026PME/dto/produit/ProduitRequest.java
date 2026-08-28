@@ -21,7 +21,7 @@ public class ProduitRequest {
     private int quantiteStock;
     @Positive
     private int seuilAlert;
-    @NotNull
+    @Positive @NotNull
     private Long categorieId;
 
     public ProduitRequest() {

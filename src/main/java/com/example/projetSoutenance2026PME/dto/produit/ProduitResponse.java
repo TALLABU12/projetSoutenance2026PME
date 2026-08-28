@@ -16,7 +16,9 @@ public class ProduitResponse {
     private boolean actif;
     private CategorieResponse categorie;
 
-    public ProduitResponse() {
+    public ProduitResponse(Long id, int quantiteStock) {
+        this.id = id;
+        this.quantiteStock = quantiteStock;
     }
     public ProduitResponse(Long id,String reference, String nom, String description, BigDecimal prixUnitaire, int quantiteStock, int seuilAlert, boolean actif,CategorieResponse categorie) {
         this.id = id;
