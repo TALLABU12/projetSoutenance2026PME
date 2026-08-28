@@ -24,7 +24,7 @@ public interface MouvementStockRepository extends JpaRepository<MouvementStock,L
                JOIN FETCH ms.produit p
                JOIN FETCH p.categorie
                WHERE p.id = :produitId
-               ORDER BY ms.DateMouvement DESC
+               ORDER BY ms.dateMouvement DESC
                
                """)
 

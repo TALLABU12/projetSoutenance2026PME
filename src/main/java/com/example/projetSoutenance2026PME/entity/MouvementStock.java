@@ -21,7 +21,7 @@ public class MouvementStock {
     @Column(nullable = false)
     private int quantite;
     @Column(nullable = false)
-    private LocalDateTime DateMouvement;
+    private LocalDateTime dateMouvement;
     @Column(nullable = false)
     private String commentaire;
 
