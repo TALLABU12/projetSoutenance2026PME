@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "MouvementsStock")
+@Table(name = "mouvementsstock")
 public class MouvementStock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,16 +26,8 @@ public class MouvementStock {
     private String commentaire;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "produitId")
+    @JoinColumn(name = "produit_id")
     private Produit produit;
-
-    public MouvementStock(TypeMouvement typeMouvement, OrigineMouvement origineMouvement, int quantite, LocalDateTime dateMouvement, String commentaire) {
-        this.typeMouvement = typeMouvement;
-        this.origineMouvement = origineMouvement;
-        this.quantite = quantite;
-        this.DateMouvement = dateMouvement;
-        this.commentaire = commentaire;
-    }
     public MouvementStock(TypeMouvement typeMouvement, OrigineMouvement origineMouvement, int quantite, String commentaire) {
         this.typeMouvement = typeMouvement;
         this.origineMouvement = origineMouvement;
@@ -44,7 +36,7 @@ public class MouvementStock {
     }
     @PrePersist
     protected void onCreate(){
-        this.DateMouvement = LocalDateTime.now();
+        this.dateMouvement = LocalDateTime.now();
     }
 
     public MouvementStock() {
@@ -75,7 +67,7 @@ public class MouvementStock {
     }
 
     public LocalDateTime getDateMouvement() {
-        return DateMouvement;
+        return dateMouvement;
     }
 
     public String getCommentaire() {
