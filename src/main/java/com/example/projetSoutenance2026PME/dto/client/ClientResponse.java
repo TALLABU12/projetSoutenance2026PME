@@ -1,5 +1,7 @@
 package com.example.projetSoutenance2026PME.dto.client;
 
+import com.example.projetSoutenance2026PME.entity.Client;
+
 import java.time.LocalDateTime;
 
 public class ClientResponse {
@@ -38,6 +40,13 @@ public class ClientResponse {
         this.dateModification = dateModification;
         this.actif = actif;
     }
+
+    public ClientResponse(Client clients) {
+    }
+    public ClientResponse(String code) {
+        this.nom = nom;
+    }
+
 
     public Long getId() {
         return id;

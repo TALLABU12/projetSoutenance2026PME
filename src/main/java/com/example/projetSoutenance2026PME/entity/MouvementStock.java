@@ -28,11 +28,17 @@ public class MouvementStock {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "produit_id")
     private Produit produit;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "facture_id", nullable = true)
+    private Facture facture;
+
     public MouvementStock(TypeMouvement typeMouvement, OrigineMouvement origineMouvement, int quantite, String commentaire) {
         this.typeMouvement = typeMouvement;
         this.origineMouvement = origineMouvement;
         this.quantite = quantite;
         this.commentaire = commentaire;
+
     }
     @PrePersist
     protected void onCreate(){
@@ -40,6 +46,23 @@ public class MouvementStock {
     }
 
     public MouvementStock() {
+    }
+
+    public void setTypeMouvement(TypeMouvement typeMouvement) {
+        this.typeMouvement = typeMouvement;
+    }
+
+    public void setOrigineMouvement(OrigineMouvement origineMouvement) {
+        this.origineMouvement = origineMouvement;
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
+
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
     }
 
     public Produit getProduit() {
@@ -75,4 +98,7 @@ public class MouvementStock {
     }
 
 
+    public void setFacture(Facture facture) {
+        this.facture = facture;
+    }
 }

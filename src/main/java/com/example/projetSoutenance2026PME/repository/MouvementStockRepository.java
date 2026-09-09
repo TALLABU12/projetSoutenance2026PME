@@ -9,19 +9,20 @@ import java.util.List;
 
 public interface MouvementStockRepository extends JpaRepository<MouvementStock,Long> {
 
+    @Query("""
+       SELECT ms
+       FROM MouvementStock ms
+       JOIN FETCH ms.produit p
+       LEFT JOIN FETCH ms.facture
+       JOIN FETCH p.categorie
+       """)
+    List<MouvementStock> findAllWithProduit();
+
     @Query(""" 
                SELECT ms
                FROM MouvementStock ms
                JOIN FETCH ms.produit p
-               JOIN FETCH p.categorie
-               """)
-
-    public List<MouvementStock> findAllWithProduit();
-
-    @Query(""" 
-               SELECT ms
-               FROM MouvementStock ms
-               JOIN FETCH ms.produit p
+               LEFT JOIN FETCH ms.facture
                JOIN FETCH p.categorie
                WHERE p.id = :produitId
                ORDER BY ms.dateMouvement DESC
@@ -31,4 +32,7 @@ public interface MouvementStockRepository extends JpaRepository<MouvementStock,L
     public List<MouvementStock> findAllByProduit(
             @Param("produitId")Long produitId
     );
+
+
+
 }

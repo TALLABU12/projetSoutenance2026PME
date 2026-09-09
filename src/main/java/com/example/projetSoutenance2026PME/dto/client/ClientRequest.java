@@ -22,14 +22,18 @@ public class ClientRequest {
     public ClientRequest() {
     }
 
+    public ClientRequest(String code, String nom, String telephone, String email, String adresse) {
+        this.code = code;
+        this.nom = nom;
+        this.telephone = telephone;
+        this.email = email;
+        this.adresse = adresse;
+    }
 
     public String getCode() {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getNom() {
         return nom;
@@ -43,9 +47,7 @@ public class ClientRequest {
         return telephone;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
-    }
+
 
     public String getEmail() {
         return email;

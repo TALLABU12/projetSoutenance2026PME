@@ -21,7 +21,7 @@ public class MouvementStockRequest {
     @Positive(message = "L'identifiant du produit doit être positif")
     private Long produitId;
 
-    public MouvementStockRequest(TypeMouvement typeMouvement, OrigineMouvement origineMouvement, int quantite, LocalDateTime dateMouvement, String commentaire,Long produitId) {
+    public MouvementStockRequest(TypeMouvement typeMouvement, OrigineMouvement origineMouvement, int quantite, String commentaire,Long produitId) {
         this.typeMouvement = typeMouvement;
         this.origineMouvement = origineMouvement;
         this.quantite = quantite;

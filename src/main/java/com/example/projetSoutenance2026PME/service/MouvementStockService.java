@@ -4,6 +4,7 @@ import com.example.projetSoutenance2026PME.dto.MouvementStock.MouvementStockRequ
 import com.example.projetSoutenance2026PME.dto.MouvementStock.MouvementStockResponse;
 import com.example.projetSoutenance2026PME.dto.categorie.CategorieResponse;
 import com.example.projetSoutenance2026PME.dto.produit.ProduitResponse;
+import com.example.projetSoutenance2026PME.entity.Facture;
 import com.example.projetSoutenance2026PME.entity.MouvementStock;
 import com.example.projetSoutenance2026PME.entity.Produit;
 import com.example.projetSoutenance2026PME.enumeration.OrigineMouvement;
@@ -85,6 +86,33 @@ public class MouvementStockService {
         }
     }
 
+    @Transactional
+    public MouvementStockResponse ajouterMouvementVente(Produit produit, Facture facture,int quantite){
+        System.out.println("Produit ID : " + produit.getId());
+        System.out.println("Stock disponible : " + produit.getQuantiteStock());
+        System.out.println("Quantité demandée : " + quantite);
+
+        if (quantite > produit.getQuantiteStock()) {
+            throw new StockInsuffisantException("Stock insuffisant");
+        }
+        if (quantite > produit.getQuantiteStock()){
+            throw new StockInsuffisantException("Le stock est insuffisante");
+        }
+        MouvementStock mouvementStock = new MouvementStock();
+        mouvementStock.setTypeMouvement(TypeMouvement.SORTIE);
+        mouvementStock.setOrigineMouvement(OrigineMouvement.VENTE);
+        mouvementStock.setProduit(produit);
+        mouvementStock.setFacture(facture);
+        mouvementStock.setQuantite(quantite);
+        mouvementStock.setCommentaire("Vente - facture "+facture.getNumero());
+
+        produit.setQuantiteStock(
+                produit.getQuantiteStock() - quantite
+        );
+
+         MouvementStock mouvementStock1 =  mouvementStockRepository.save(mouvementStock);
+         return toResponse(mouvementStock1);
+    }
     @Transactional
     public MouvementStockResponse ajouterMouvementStock(MouvementStockRequest request) {
         verifierCoherenceMouvement(request.getTypeMouvement(), request.getOrigineMouvement());

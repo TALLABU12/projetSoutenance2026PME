@@ -42,6 +42,7 @@ public class Produit {
         this.categorie = categorie;
 
     }
+
     @PrePersist
     protected void onCreate(){
         this.actif = true;

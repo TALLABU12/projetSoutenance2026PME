@@ -1,6 +1,7 @@
 package com.example.projetSoutenance2026PME.dto.produit;
 
 import com.example.projetSoutenance2026PME.dto.categorie.CategorieResponse;
+import com.example.projetSoutenance2026PME.entity.Categorie;
 
 import java.math.BigDecimal;
 
@@ -16,9 +17,14 @@ public class ProduitResponse {
     private boolean actif;
     private CategorieResponse categorie;
 
-    public ProduitResponse(Long id, int quantiteStock) {
+    public ProduitResponse(Long id, String reference, String nom, String description, BigDecimal prixUnitaire, int quantiteStock, int seuilAlert, boolean actif, Categorie categorie) {
         this.id = id;
         this.quantiteStock = quantiteStock;
+    }
+    public ProduitResponse(Long id,String reference,String nom) {
+        this.id = id;
+        this.reference = reference;
+        this.nom = nom;
     }
     public ProduitResponse(Long id,String reference, String nom, String description, BigDecimal prixUnitaire, int quantiteStock, int seuilAlert, boolean actif,CategorieResponse categorie) {
         this.id = id;
@@ -30,6 +36,10 @@ public class ProduitResponse {
         this.seuilAlert = seuilAlert;
         this.actif = actif;
         this.categorie = categorie;
+    }
+
+    public ProduitResponse(String nom) {
+        this.nom = nom;
     }
 
 
