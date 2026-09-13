@@ -105,13 +105,13 @@ public class FactureService {
                     "Seule une facture en brouillon peut être validée"
             );
         }
-
+        facture.setNumero(genererNumeroFacture());
+        factureRepository.save(facture);
         for (LigneFacture ligneFacture : facture.getLigneFacture()){
 
             Produit produit = ligneFacture.getProduit();
             mouvementStockService.ajouterMouvementVente(produit,facture, ligneFacture.getQuantite());
         }
-        facture.setNumero(genererNumeroFacture());
 
         facture.valider();
 

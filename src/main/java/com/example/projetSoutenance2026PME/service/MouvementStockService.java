@@ -88,9 +88,6 @@ public class MouvementStockService {
 
     @Transactional
     public MouvementStockResponse ajouterMouvementVente(Produit produit, Facture facture,int quantite){
-        System.out.println("Produit ID : " + produit.getId());
-        System.out.println("Stock disponible : " + produit.getQuantiteStock());
-        System.out.println("Quantité demandée : " + quantite);
 
         if (quantite > produit.getQuantiteStock()) {
             throw new StockInsuffisantException("Stock insuffisant");
