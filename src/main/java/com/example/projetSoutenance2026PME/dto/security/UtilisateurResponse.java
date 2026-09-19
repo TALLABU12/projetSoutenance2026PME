@@ -1,5 +1,6 @@
 package com.example.projetSoutenance2026PME.dto.security;
 
+import com.example.projetSoutenance2026PME.entity.Employe;
 import com.example.projetSoutenance2026PME.enumeration.Role;
 
 import java.time.LocalDateTime;
@@ -13,7 +14,7 @@ public class UtilisateurResponse {
     private boolean actif;
     private LocalDateTime dateCreation;
     private Set<Role> roles;
-
+    private Long employeId;
     public UtilisateurResponse() {
     }
 
@@ -23,7 +24,8 @@ public class UtilisateurResponse {
             String email,
             LocalDateTime dateCreation,
             boolean actif,
-            Set<Role> roles
+            Set<Role> roles,
+            Long employeId
     ) {
         this.id = id;
         this.username = username;
@@ -31,6 +33,11 @@ public class UtilisateurResponse {
         this.actif = actif;
         this.dateCreation = dateCreation;
         this.roles = roles;
+        this.employeId = employeId;
+    }
+
+    public Long getEmployeId() {
+        return employeId;
     }
 
     public Long getId() {

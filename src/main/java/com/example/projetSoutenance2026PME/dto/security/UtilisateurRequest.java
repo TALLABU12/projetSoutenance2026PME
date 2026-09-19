@@ -1,5 +1,6 @@
 package com.example.projetSoutenance2026PME.dto.security;
 
+import com.example.projetSoutenance2026PME.entity.Employe;
 import com.example.projetSoutenance2026PME.enumeration.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -32,6 +33,8 @@ public class UtilisateurRequest {
     @NotEmpty(message = "Au moins un rôle est obligatoire")
     private Set<Role> roles;
 
+    private Long employeId;
+
     public UtilisateurRequest() {
     }
 
@@ -61,6 +64,10 @@ public class UtilisateurRequest {
 
     public Set<Role> getRoles() {
         return roles;
+    }
+
+    public Long getEmployeId() {
+        return employeId;
     }
 
     public void setRoles(Set<Role> roles) {

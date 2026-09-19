@@ -17,8 +17,8 @@ public class ClientController {
     }
 
     @GetMapping
-    public List<ClientResponse> listerClients(){
-        return clientService.listerClients();
+    public List<ClientResponse> listerClients(@RequestParam(required = false) Boolean actif){
+        return clientService.listerClients(actif);
     }
 
     @GetMapping("/{id}")

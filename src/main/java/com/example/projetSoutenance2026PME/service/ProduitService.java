@@ -33,8 +33,14 @@ public class ProduitService {
     }
 
     @Transactional
-    public List<ProduitResponse> listerProduits(){
-        return produitRepository.findAllWithCategorie().stream().map(this::toResponse).toList();
+    public List<ProduitResponse> listerProduits(Boolean actif){
+        List<Produit> produits;
+        if (actif == null){
+            produits = produitRepository.findAllWithCategorie();
+        }else {
+            produits = produitRepository.findAllByActifWithCategorie(actif);
+        }
+        return produits.stream().map(this::toResponse).toList();
     }
 
     @Transactional

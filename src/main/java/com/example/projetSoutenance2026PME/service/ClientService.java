@@ -58,8 +58,14 @@ public class ClientService {
     }
 
     @Transactional
-    public List<ClientResponse> listerClients(){
-        return clientRepository.findAll().stream()
+    public List<ClientResponse> listerClients(Boolean actif){
+        List<Client> clients;
+        if (actif == null){
+            clients = clientRepository.findAll();
+        }else{
+            clients = clientRepository.findAllByActif(actif);
+        }
+        return clients.stream()
                 .map(this::toResponse).toList();
     }
 

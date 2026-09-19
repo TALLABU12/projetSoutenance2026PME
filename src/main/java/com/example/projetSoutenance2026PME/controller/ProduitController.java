@@ -27,8 +27,8 @@ public class ProduitController {
     }
 
     @GetMapping
-    public List<ProduitResponse> listerProduit(){
-        return produitService.listerProduits();
+    public List<ProduitResponse> listerProduit(@RequestParam(required = false) Boolean actif){
+        return produitService.listerProduits(actif);
     }
 
     @GetMapping("/{id}")

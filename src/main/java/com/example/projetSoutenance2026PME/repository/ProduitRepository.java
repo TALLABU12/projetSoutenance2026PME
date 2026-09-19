@@ -4,6 +4,7 @@ import com.example.projetSoutenance2026PME.entity.MouvementStock;
 import com.example.projetSoutenance2026PME.entity.Produit;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -13,4 +14,10 @@ public interface ProduitRepository extends JpaRepository<Produit,Long> {
    @Query("SELECT p  FROM Produit p JOIN FETCH p.categorie")
    public List<Produit> findAllWithCategorie();
 
+    @Query("""
+            SELECT p
+            FROM Produit p 
+            JOIN FETCH p.categorie
+            WHERE p.actif = :actif""")
+    public List<Produit> findAllByActifWithCategorie(@Param("actif") boolean actif);
 }

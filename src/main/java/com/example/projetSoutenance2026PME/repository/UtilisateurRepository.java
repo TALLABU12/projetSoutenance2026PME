@@ -3,6 +3,7 @@ package com.example.projetSoutenance2026PME.repository;
 import com.example.projetSoutenance2026PME.entity.Utilisateur;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> {
@@ -16,4 +17,9 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long> 
     boolean existsByUsernameAndIdNot(String username, Long id);
 
     boolean existsByEmailAndIdNot(String email, Long id);
+
+    Optional<Utilisateur> findByEmployeId(Long employeId);
+
+    List<Utilisateur> findAllByActif(boolean actif);
+
 }

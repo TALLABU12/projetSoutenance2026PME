@@ -41,6 +41,10 @@ public class Utilisateur {
     @Column(name = "role", nullable = false)
     private Set<Role> roles = new HashSet<>();
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employe_id", unique = true)
+    private Employe employe;
+
     public Utilisateur() {
     }
 
@@ -108,6 +112,13 @@ public class Utilisateur {
         this.username = username;
     }
 
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
+    }
     public void ajouterRole(Role role) {
         this.roles.add(role);
     }

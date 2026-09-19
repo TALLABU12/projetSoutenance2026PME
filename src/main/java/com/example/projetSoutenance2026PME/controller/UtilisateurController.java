@@ -26,9 +26,9 @@ public class UtilisateurController {
     }
 
     @GetMapping
-    public ResponseEntity<List<UtilisateurResponse>> listerUtilisateur(){
+    public ResponseEntity<List<UtilisateurResponse>> listerUtilisateur(@RequestParam(required = false) Boolean actif){
         return ResponseEntity.ok(
-                utilisateurService.listerUtilisateur()
+                utilisateurService.listerUtilisateur(actif)
         );
     }
 
